@@ -1,0 +1,216 @@
+﻿<Window x:Class="Polytweet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Polytweet" 
+        Height="500" Width="800"
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow" >
+
+
+    <Window.Resources>
+        <!-- ***************** ***************** **************** -->
+        <!-- ****************** template ****************** -->
+        <!-- ***************** ***************** **************** -->
+        <ControlTemplate x:Key="VerticalExpander" TargetType="{x:Type Expander}">
+            <Border Name="ContentBorder"
+                Width="0">
+                <ContentPresenter />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsExpanded"
+                     Value="True">
+                    <Setter TargetName="ContentBorder"
+                        Property="Width"
+                        Value="Auto" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!-- ***************** ***************** **************** -->
+        <!-- ***************** channel collection **************** -->
+        <!-- ***************** ***************** **************** -->
+        <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
+        <ObjectDataProvider x:Key="ChannelCollection"/>
+        <ObjectDataProvider x:Key="ChannelCollectionEmpty"/>
+        <DataTemplate x:Key="ChannelSourceTemplate">
+            <Border Padding="5,5,5,5" Margin="5,5,5,5" BorderBrush="DarkGray" BorderThickness="3" CornerRadius="5">
+                <StackPanel Orientation="Vertical">
+                    <Image Width="100" Height="100" Stretch="Fill" Source="{Binding Path=ImageChannel, Converter={StaticResource ByteArrayToImageConverter}, Mode=Default}"/>
+                    <TextBlock Text="{Binding Path=Nom}" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <!--StackPanel Orientation="Vertical">
+                    <Image Width="100" Height="100" Stretch="Fill" Source="{Binding Path=Image, Converter={StaticResource ByteArrayToImageConverter}, Mode=Default}"/>
+                    <TextBlock Text="{Binding Path=name}" HorizontalAlignment="Center"/>
+                    </ItemsControl>
+                </ -->
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="ChannelSourceTemplate2">
+            <Border Padding="1,1,1,1" Margin="1,1,1,1" BorderBrush="DarkGray" BorderThickness="1" CornerRadius="1">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <Image Width="50" Height="50" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding Path=ImageChannel, Converter={StaticResource ByteArrayToImageConverter}, Mode=Default}"/>
+                    <TextBlock Text="{Binding Path=Nom}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <DataGrid Name="dg_channelMessages" ItemsSource="{Binding Path=ListMessage}" AutoGenerateColumns="False" Width="300" CanUserSortColumns="True" ColumnWidth="auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Auteur" Binding="{Binding author}" />
+                            <DataGridTextColumn Header="Message" Binding="{Binding content}" Width="180"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding date}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--/ItemsControl-->
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        
+        <!-- ***************** ***************** **************** -->
+        <!-- ********************* Styles *********************-->
+        <!-- ***************** ***************** **************** -->
+        <Style x:Key="ChannelListBoxStyle" TargetType="ListBox">
+            <Setter Property="ItemsSource" Value="{Binding}" />
+            <Setter Property="ItemTemplate" Value="{StaticResource ChannelSourceTemplate}" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Visible" />
+            <Setter Property="AllowDrop" Value="True" />
+            <Setter Property="ListBox.ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="Background" Value="DeepSkyBlue"/>
+        </Style>
+
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="DodgerBlue" >
+            <Button Name="B1" Content="Gestion des channels" Click="B1_Click" Height="100" Width="Auto" Style="{StaticResource buttonStyle}"/>
+            <Button Name="B2" Content="Ecrire un message" Click="B2_Click" Height="100" Width="Auto" Style="{StaticResource buttonStyle}" />
+            <Button Name="B3" Content="Creer une channel" Click="B3_Click" Height="100" Width="Auto" Style="{StaticResource buttonStyle}" />
+            <Button Name="B4" Content="About" Click="B4_Click" Height="100" Width="Auto" Style="{StaticResource buttonStyle}"/>
+        </StackPanel>
+
+        <DockPanel LastChildFill="True" Grid.Column="1">
+            <Grid DockPanel.Dock="Left" >
+                <Expander Name="Expander_channels"
+                          Template="{StaticResource VerticalExpander}"
+                          IsExpanded="False">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Rechercher une channel" VerticalAlignment="Top"/>
+                        <TextBox Name="tb_lookForChannel" 
+                                 HorizontalAlignment="Center" 
+                                 VerticalAlignment="Top" 
+                                 Height="20" 
+                                 Width="190" 
+                                 TextWrapping="Wrap" 
+                                 Text="" 
+                                 
+                                 Margin="5,21,5,218"/>
+                        <Button Name="bt_getChannel" 
+                                Content="R" 
+                                Click="Bt_lookForChannel_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="179,21,5,0" Width="16"/>
+                        <ListBox x:Name="NotreListbox"
+                                 HorizontalAlignment="Center"
+                                 Style="{StaticResource ChannelListBoxStyle}"
+                                 PreviewMouseLeftButtonDown="ImageDragEvent"
+                                 Drop="ImageDropEvent"
+                                 Width="200"
+                                 ItemsSource="{Binding}" 
+                                 DataContext="{StaticResource ChannelCollection}" 
+                                 ItemTemplate="{StaticResource ChannelSourceTemplate}" Margin="0,50,0,0" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
+                </Expander>
+                <Expander Name="Expander_newMessage"
+                      Template="{StaticResource VerticalExpander}"
+                      IsExpanded="False"
+                      DockPanel.Dock="Left">
+                    <Grid Height="459" VerticalAlignment="Top" Width="200">
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Creer un nouveau message" VerticalAlignment="Top"/>
+                        <TextBox Name="tb_newMessage" 
+                                 HorizontalAlignment="Center" 
+                                 Height="220" 
+                                 Width="190" 
+                                 TextWrapping="Wrap" 
+                                 Text="" 
+                                 AcceptsReturn="True"
+                                 VerticalAlignment="Center" 
+                                 Margin="5,21,5,218" MaxLength="140"/>
+
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Choisir une channel" VerticalAlignment="Center" Margin="0,246,0,181"/>
+                        <ComboBox Name="cbx_choixChannel" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center" 
+                                  Width="150" 
+                                  Margin="0,283,0,154" 
+                                  HorizontalContentAlignment="Center"/>
+                        <Button Name="bt_newMessage" 
+                                Content="Envoyer" 
+                                Click="Bt_newMessage_Click"
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="48,0,48,54" Width="104" Height="41"/>
+                    </Grid>
+                </Expander>
+                <Expander Name="Expander_newChannel"
+                      Template="{StaticResource VerticalExpander}"
+                      IsExpanded="False"
+                      DockPanel.Dock="Left">
+
+                    <Grid Height="459" VerticalAlignment="Top" Width="200">
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Créer une nouvelle channel" VerticalAlignment="Top" Margin="28,10,28,0"/>
+                        <TextBox Name="tb_newChannel" 
+                                 Text="Nom"
+                                 Height="auto"
+                                 Width="auto"
+                                 TextWrapping="WrapWithOverflow" 
+                                 VerticalAlignment="Center" 
+                                 HorizontalContentAlignment="Center"
+                                 Margin="0,31,0,410"/>
+                        <TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Visibilité de la channel" VerticalAlignment="Top" Margin="28,54,28,0" Height="21" Width="144"/>
+                        <RadioButton Content="Privée" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="68,80,0,0" Height="16" Width="84"/>
+                        <RadioButton Content="Open" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="68,101,0,0" Height="16" Width="84"/>
+
+                        <Button Name="bt_newChannel" 
+                                Content="Envoyer" 
+                                Click="Bt_newChannel_Click"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="48,0,48,54" Width="104" Height="41"/>
+
+                    </Grid>
+                </Expander>
+                <Expander Name="Expander_settings"
+                      Template="{StaticResource VerticalExpander}"
+                      IsExpanded="False"
+                      DockPanel.Dock="Left">
+                    <Grid Height="459" VerticalAlignment="Top" Width="200">
+                        <TextBlock Name="tbk_changeUser" HorizontalAlignment="Left" TextWrapping="Wrap"  Width="120" Margin="48,10,0,406"/>
+                        <TextBox Name="tb_userName"  HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top" Width="120" Margin="48,58,32,0"/>
+                        <PasswordBox  Name="pwd_user" HorizontalAlignment="Left" Width="120" Height="20" Margin="48,86,0,353"/>
+                        <Button Name="connect" Content="Se connecter" Click="Bt_Connect_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="48,128,0,0"/>
+
+                    </Grid>
+                </Expander>
+            </Grid>
+            <ListBox Width="auto" Height="auto" MinWidth="500" MinHeight="500" Background="#FF6797D3"
+                     Style="{StaticResource ChannelListBoxStyle}"
+                     DataContext="{StaticResource ChannelCollectionEmpty}" 
+                     ItemTemplate="{StaticResource ChannelSourceTemplate2}"
+                     PreviewMouseLeftButtonDown="ImageDragEvent"
+                     Drop="ImageDropEvent" />
+        </DockPanel>
+    </Grid>
+</Window>

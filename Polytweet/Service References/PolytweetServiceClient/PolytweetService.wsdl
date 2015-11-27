@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PolytweetService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:5634/PolytweetService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:5634/PolytweetService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:5634/PolytweetService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PolytweetService" />
+      <xsd:import schemaLocation="http://localhost:5634/PolytweetService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPolytweetService_initTestContext_InputMessage">
+    <wsdl:part name="parameters" element="tns:initTestContext" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_initTestContext_OutputMessage">
+    <wsdl:part name="parameters" element="tns:initTestContextResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:connect" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:connectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_addWalledChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:addWalledChannel" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_addWalledChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addWalledChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_removeWalledChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeWalledChannel" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_removeWalledChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeWalledChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_getAllChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllChannel" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_getAllChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_findChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:findChannel" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_findChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_getSubscribedChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSubscribedChannels" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_getSubscribedChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSubscribedChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_createChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:createChannel" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_createChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_publishMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:publishMessage" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_publishMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:publishMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_subscribeTo_InputMessage">
+    <wsdl:part name="parameters" element="tns:subscribeTo" />
+  </wsdl:message>
+  <wsdl:message name="IPolytweetService_subscribeTo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:subscribeToResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPolytweetService">
+    <wsdl:operation name="initTestContext">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/initTestContext" message="tns:IPolytweetService_initTestContext_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/initTestContextResponse" message="tns:IPolytweetService_initTestContext_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/connect" message="tns:IPolytweetService_connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/connectResponse" message="tns:IPolytweetService_connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addWalledChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/addWalledChannel" message="tns:IPolytweetService_addWalledChannel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/addWalledChannelResponse" message="tns:IPolytweetService_addWalledChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeWalledChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/removeWalledChannel" message="tns:IPolytweetService_removeWalledChannel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/removeWalledChannelResponse" message="tns:IPolytweetService_removeWalledChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/getAllChannel" message="tns:IPolytweetService_getAllChannel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/getAllChannelResponse" message="tns:IPolytweetService_getAllChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/findChannel" message="tns:IPolytweetService_findChannel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/findChannelResponse" message="tns:IPolytweetService_findChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSubscribedChannels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/getSubscribedChannels" message="tns:IPolytweetService_getSubscribedChannels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/getSubscribedChannelsResponse" message="tns:IPolytweetService_getSubscribedChannels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/createChannel" message="tns:IPolytweetService_createChannel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/createChannelResponse" message="tns:IPolytweetService_createChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="publishMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/publishMessage" message="tns:IPolytweetService_publishMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/publishMessageResponse" message="tns:IPolytweetService_publishMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="subscribeTo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPolytweetService/subscribeTo" message="tns:IPolytweetService_subscribeTo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPolytweetService/subscribeToResponse" message="tns:IPolytweetService_subscribeTo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPolytweetService" type="tns:IPolytweetService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="initTestContext">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/initTestContext" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="connect">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addWalledChannel">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/addWalledChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeWalledChannel">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/removeWalledChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllChannel">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/getAllChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findChannel">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/findChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSubscribedChannels">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/getSubscribedChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createChannel">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/createChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="publishMessage">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/publishMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribeTo">
+      <soap:operation soapAction="http://tempuri.org/IPolytweetService/subscribeTo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PolytweetService">
+    <wsdl:port name="BasicHttpBinding_IPolytweetService" binding="tns:BasicHttpBinding_IPolytweetService">
+      <soap:address location="http://localhost:5634/PolytweetService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

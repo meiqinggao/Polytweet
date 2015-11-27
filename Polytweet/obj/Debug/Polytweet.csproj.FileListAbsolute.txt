@@ -1,0 +1,15 @@
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\bin\Debug\Polytweet.exe.config
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\bin\Debug\Polytweet.exe
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\bin\Debug\Polytweet.pdb
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\MainWindow.baml
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\MainWindow.g.cs
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\App.g.cs
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet_MarkupCompile.cache
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.g.resources
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.Properties.Resources.resources
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.csproj.GenerateResource.Cache
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.exe
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.pdb
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet.csprojResolveAssemblyReference.cache
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Hadrien\Documents\Programmation\VisualStudio\Polytweet\Polytweet\obj\Debug\Polytweet_MarkupCompile.lref

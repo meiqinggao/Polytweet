@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6a0578de-2e63-4901-ab9c-b6a90ec956b1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5634/PolytweetService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PolytweetService.xsd" MetadataType="Schema" ID="c5dfa20a-00e1-4205-926b-39921e0fa9d1" SourceId="1" SourceUrl="http://localhost:5634/PolytweetService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PolytweetService1.xsd" MetadataType="Schema" ID="4253965c-7ebd-4bd9-838b-be04de159a6f" SourceId="1" SourceUrl="http://localhost:5634/PolytweetService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PolytweetService.wsdl" MetadataType="Wsdl" ID="14c9e16f-15d8-4883-be60-41cae6343846" SourceId="1" SourceUrl="http://localhost:5634/PolytweetService.svc?wsdl" />
+    <MetadataFile FileName="PolytweetService2.xsd" MetadataType="Schema" ID="862b4384-45eb-442c-a230-9b1a8a2c89e7" SourceId="1" SourceUrl="http://localhost:5634/PolytweetService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PolytweetService3.xsd" MetadataType="Schema" ID="2c7dec80-1cb1-4941-904c-29d4974c45b3" SourceId="1" SourceUrl="http://localhost:5634/PolytweetService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
